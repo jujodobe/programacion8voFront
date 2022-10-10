@@ -13,16 +13,18 @@ namespace Programacion8vo.Controllers
         {
             List<Models.clienteModel> clientes = new List<Models.clienteModel>();
             var api = new HttpClient();
-            var json = await api.GetStringAsync("https://localhost:7279/clientes/6");
-            Models.clienteModel cliente = JsonConvert.DeserializeObject<Models.clienteModel>(json);
-            clientes.Add(cliente);
+            var json = await api.GetStringAsync("https://localhost:7279/ListClientes/");
+            clientes = JsonConvert.DeserializeObject<List<Models.clienteModel>>(json);
             return View(clientes);
         }
 
         // GET: ClienteController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var api = new HttpClient();
+            var json = await api.GetStringAsync("https://localhost:7279/clientes/"+id);
+            Models.clienteModel cliente = JsonConvert.DeserializeObject<Models.clienteModel>(json);
+            return View(cliente);
         }
 
         // GET: ClienteController/Create
