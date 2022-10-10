@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Programacion8vo.Models.clienteModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";   
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+</head>
+
+<body>
+    <p>
+        <a asp-action="Create">Nuevo Cliente</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Apellido
+                </th>
+                <th>
+                    Número Documento
+                </th>
+                <th>
+                    Dirección
+                </th>
+                <th>
+                    Teléfono
+                </th>
+                <th>
+                    Edad
+                </th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Delete
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model){
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Apellido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.NroDocumeno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Telefono)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => cliente.Edad)
+                    </td>
+                    <td>
+                        <input asp-route="Edit" type="submit" value="Editar"/>
+                    </td>
+                    <td>
+                    <td>
+                        <input asp-route="Delete" type="submit" value="Eliminar"/>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+
+</html>
